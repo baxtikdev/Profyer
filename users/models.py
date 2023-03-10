@@ -30,7 +30,6 @@ class UserVote(models.Model):
     email = models.EmailField()
     age = models.IntegerField(null=True, blank=True)
     vote_number = models.IntegerField(null=True, blank=True)
-    sex = models.CharField(max_length=20, null=True, blank=True)
     language = models.CharField(max_length=5)
     services = models.ForeignKey('Service', on_delete=models.SET_NULL, null=True)
     type = models.IntegerField(choices=UserType.choices)

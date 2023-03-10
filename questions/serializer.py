@@ -21,6 +21,11 @@ class CategorySerializer(TranslatedSerializerMixin, TranslatableModelSerializer)
         model = Category
         fields = '__all__'
 
+    def to_representation(self, instance):
+        response = super().to_representation(instance)
+        response['questions'] = QuestionSerializer(instance.category_question.all(), many=True).data
+        return response
+
 
 class ServiceSerializer(TranslatedSerializerMixin, TranslatableModelSerializer):
     translations = TranslatedFieldsField(shared_model=Service)
@@ -35,16 +40,16 @@ class OptionSerializer(TranslatedSerializerMixin, TranslatableModelSerializer):
 
     class Meta:
         model = Option
-        fields = '__all__'
+        exclude = ['question']
 
 
 class QuestionSerializer(TranslatedSerializerMixin, TranslatableModelSerializer):
-    category = CategorySerializer(read_only=True, many=False)
+    # category = CategorySerializer(read_only=True, many=False)
     translations = TranslatedFieldsField(shared_model=Question)
 
     class Meta:
         model = Question
-        exclude = ['created_at']
+        exclude = ['created_at', 'category']
 
     def to_representation(self, instance):
         response = super().to_representation(instance)

@@ -8,7 +8,7 @@ class PageAdmin(TranslatableAdmin):
     list_display = ('name',)
     fieldsets = (
         (None, {
-            'fields': ('name',),
+            'fields': ['name'],
         }),
     )
 
@@ -20,7 +20,7 @@ class CategoryAdmin(TranslatableAdmin):
     list_display = ('name',)
     fieldsets = (
         (None, {
-            'fields': ('page', 'name'),
+            'fields': ['name'],
         }),
     )
 
@@ -31,7 +31,7 @@ admin.site.register(Category, CategoryAdmin)
 class QuestionAdmin(TranslatableAdmin):
     fieldsets = (
         (None, {
-            'fields': ('category', 'text', 'base'),
+            'fields': ['category', 'text', 'base'],
         }),
     )
 
@@ -42,7 +42,7 @@ admin.site.register(Question, QuestionAdmin)
 class OptionAdmin(TranslatableAdmin):
     fieldsets = (
         (None, {
-            'fields': ('question', 'text'),
+            'fields': ['question', 'text'],
         }),
     )
 

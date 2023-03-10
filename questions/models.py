@@ -15,7 +15,7 @@ class Page(TranslatableModel):
 
 
 class Category(TranslatableModel):
-    page = models.ForeignKey(Page, related_name='page_category', on_delete=models.SET_NULL, null=True)
+    # page = models.ForeignKey(Page, related_name='page_category', on_delete=models.SET_NULL, null=True)
     translations = TranslatedFields(
         name=models.CharField(_("Name of Category"), max_length=50)
     )
@@ -24,12 +24,21 @@ class Category(TranslatableModel):
         return self.name
 
 
+class QuestionType(models.TextChoices):
+    CHOICE = 'CHOICE', _('CHOICE')
+    CHECKBOX = 'CHECKBOX', _('CHECKBOX')
+    NUMBER = 'NUMBER', _('NUMBER')
+    AGE = 'AGE', _('AGE')
+
+
 class Question(TranslatableModel):
+
     base = models.IntegerField(default=UserType.CLIENT, choices=UserType.choices)
     translations = TranslatedFields(
         text=models.TextField(_("Question text")),
     )
     category = models.ForeignKey(Category, related_name='category_question', on_delete=models.SET_NULL, null=True)
+    type = models.CharField(max_length=10, default=QuestionType.CHOICE, choices=QuestionType.choices)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

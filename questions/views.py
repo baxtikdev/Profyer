@@ -1,4 +1,5 @@
 from rest_framework import generics, mixins, status
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
@@ -11,31 +12,22 @@ from .tasks import add_ans
 class ServiceAPIView(mixins.ListModelMixin, GenericViewSet):
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
-    permission_classes = [AllowAny]
 
 
 class PageAPIView(mixins.ListModelMixin, GenericViewSet):
     queryset = Page.objects.all()
     serializer_class = PageSerializer
-    permission_classes = [AllowAny]
-
-
-class CategoryAPIView(mixins.ListModelMixin, GenericViewSet):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-    permission_classes = [AllowAny]
 
 
 class QuestionAPIView(mixins.ListModelMixin, GenericViewSet):
-    queryset = Question.objects.all()
-    serializer_class = QuestionSerializer
-    permission_classes = [AllowAny]
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    pagination_class = PageNumberPagination
 
 
 class UserAnswerAPIView(mixins.CreateModelMixin, GenericViewSet):
     queryset = UserAnswer.objects.all()
     serializer_class = UserAnswerSerializer
-    permission_classes = [AllowAny]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)

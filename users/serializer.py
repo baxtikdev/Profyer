@@ -20,6 +20,3 @@ class NumberUserVoteSerializer(serializers.Serializer):
 class AgeUserVoteSerializer(serializers.Serializer):
     age = serializers.IntegerField(max_value=100, min_value=5, required=True)
 
-
-class SexUserVoteSerializer(serializers.Serializer):
-    sex = serializers.CharField(max_length=20, required=True)

@@ -10,8 +10,6 @@ def partial_update(id, data, type):
     instance = UserVote.objects.get(id=id)
     if type == 'number':
         instance.vote_number = data
-    elif type == 'sex':
-        instance.sex = data
     elif type == 'age':
         instance.age = data
     instance.save()

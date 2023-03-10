@@ -165,7 +165,7 @@ REST_FRAMEWORK = {
     'DEFAULT_CONTENT_LANGUAGE': 'uz',
 
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    # 'PAGE_SIZE': 10,
+    'PAGE_SIZE': 1,
 
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework.authentication.SessionAuthentication",
@@ -218,12 +218,15 @@ STATIC_URL = 'static/'
 PARLER_ENABLE_CACHING = True
 PARLER_LANGUAGES = {
     None: (
-        {'code': 'uz', },
-        {'code': 'ru', },
         {'code': 'en', },
+        # {'code': 'uz', },
+        {'code': 'ru', },
+        {'code': 'nl', },
+        {'code': 'lt', },
+        {'code': 'uk', }
     ),
     'default': {
-        'fallbacks': ['uz'],
+        'fallbacks': ['en'],
         'hide_untranslated': False,  # Default
     }
 }

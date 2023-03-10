@@ -48,4 +48,14 @@ cd stroymarket
 celery -A Profyer.celery_app worker -B -l info
 ```
 
+### Redis
+
+This app comes with Redis.
+
+To run a redis:
+``` bash
+redis-server
+```
+
+
 ## Powere by Bakhtiyor Ergashev
