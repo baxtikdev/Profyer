@@ -223,7 +223,8 @@ PARLER_LANGUAGES = {
         {'code': 'ru', },
         {'code': 'nl', },
         {'code': 'lt', },
-        {'code': 'uk', }
+        {'code': 'uk', },
+        {'code': 'es', }
     ),
     'default': {
         'fallbacks': ['en'],
