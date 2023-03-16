@@ -1,7 +1,7 @@
 from django.contrib import admin
 from parler.admin import TranslatableAdmin
 
-from .models import Service, UserVote
+from .models import Service, UserVote, Language
 from django.contrib.auth.models import Group
 from django.contrib.auth import get_user_model
 
@@ -20,6 +20,18 @@ class ServiceAdmin(TranslatableAdmin):
 
 
 admin.site.register(Service, ServiceAdmin)
+
+
+class LanguageAdmin(TranslatableAdmin):
+    list_display = ('name',)
+    fieldsets = (
+        (None, {
+            'fields': ('name',),
+        }),
+    )
+
+
+admin.site.register(Language, LanguageAdmin)
 admin.site.register(UserVote)
 
 

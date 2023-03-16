@@ -30,8 +30,8 @@ class UserVote(models.Model):
     email = models.EmailField()
     age = models.IntegerField(null=True, blank=True)
     vote_number = models.IntegerField(null=True, blank=True)
-    language = models.CharField(max_length=5)
-    services = models.ForeignKey('Service', on_delete=models.SET_NULL, null=True)
+    language = models.ManyToManyField('Language', blank=True)
+    services = models.ManyToManyField('Service', blank=True)
     type = models.IntegerField(choices=UserType.choices)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -42,6 +42,15 @@ class UserVote(models.Model):
 class Service(TranslatableModel):
     translations = TranslatedFields(
         name=models.CharField(_("Name of Service"), max_length=50)
+    )
+
+    def __str__(self):
+        return self.name
+
+
+class Language(TranslatableModel):
+    translations = TranslatedFields(
+        name=models.CharField(_("Language"), max_length=50)
     )
 
     def __str__(self):
