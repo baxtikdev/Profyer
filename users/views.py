@@ -1,9 +1,14 @@
 from rest_framework import generics, mixins, status
 from rest_framework.viewsets import GenericViewSet
-from .serializer import UserVoteSerializer, NumberUserVoteSerializer, AgeUserVoteSerializer
+from .serializer import UserVoteSerializer, NumberUserVoteSerializer, AgeUserVoteSerializer, LanguageSerializer
 from rest_framework.response import Response
-from .models import UserVote
+from .models import UserVote, Language
 from .tasks import partial_update
+
+
+class LanguageAPIView(mixins.ListModelMixin, GenericViewSet):
+    queryset = Language.objects.all()
+    serializer_class = LanguageSerializer
 
 
 class CreateUserAPIView(mixins.CreateModelMixin, GenericViewSet):

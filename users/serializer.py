@@ -1,6 +1,5 @@
 from rest_framework import serializers
-
-from users.models import UserVote
+from users.models import UserVote, Language
 
 
 class LogOutSerializer(serializers.Serializer):
@@ -20,3 +19,10 @@ class NumberUserVoteSerializer(serializers.Serializer):
 class AgeUserVoteSerializer(serializers.Serializer):
     age = serializers.IntegerField(max_value=100, min_value=5, required=True)
 
+
+class LanguageSerializer(TranslatedSerializerMixin, TranslatableModelSerializer):
+    translations = TranslatedFieldsField(shared_model=Language)
+
+    class Meta:
+        model = Language
+        fields = '__all__'
