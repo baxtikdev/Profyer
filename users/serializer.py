@@ -1,5 +1,9 @@
 from rest_framework import serializers
+
+from questions.translations import TranslatedSerializerMixin
 from users.models import UserVote, Language
+from parler_rest.serializers import TranslatableModelSerializer
+from parler_rest.fields import TranslatedFieldsField
 
 
 class LogOutSerializer(serializers.Serializer):
