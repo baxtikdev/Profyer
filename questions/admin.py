@@ -1,6 +1,7 @@
 from django.contrib import admin
 from parler.admin import TranslatableAdmin
 
+from users.models import Country
 from .models import Page, Category, Question, Option, UserAnswer
 
 
@@ -31,7 +32,7 @@ admin.site.register(Category, CategoryAdmin)
 class QuestionAdmin(TranslatableAdmin):
     fieldsets = (
         (None, {
-            'fields': ['category', 'text', 'base'],
+            'fields': ['category', 'type', 'text', 'base'],
         }),
     )
 
@@ -48,4 +49,15 @@ class OptionAdmin(TranslatableAdmin):
 
 
 admin.site.register(Option, OptionAdmin)
+
+
+class CountryAdmin(TranslatableAdmin):
+    fieldsets = (
+        (None, {
+            'fields': ['name'],
+        }),
+    )
+
+
+admin.site.register(Country, CountryAdmin)
 admin.site.register(UserAnswer)

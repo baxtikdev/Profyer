@@ -28,6 +28,7 @@ class QuestionType(models.TextChoices):
     CHECKBOX = 'CHECKBOX', _('CHECKBOX')
     NUMBER = 'NUMBER', _('NUMBER')
     AGE = 'AGE', _('AGE')
+    COUNTRY = 'COUNTRY', _('COUNTRY')
 
 
 class Question(TranslatableModel):

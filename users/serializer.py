@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from questions.translations import TranslatedSerializerMixin
-from users.models import UserVote, Language
+from users.models import UserVote, Language, Country
 from parler_rest.serializers import TranslatableModelSerializer
 from parler_rest.fields import TranslatedFieldsField
 
@@ -29,4 +29,12 @@ class LanguageSerializer(TranslatedSerializerMixin, TranslatableModelSerializer)
 
     class Meta:
         model = Language
+        fields = '__all__'
+
+
+class CountrySerializer(TranslatedSerializerMixin, TranslatableModelSerializer):
+    translations = TranslatedFieldsField(shared_model=Country)
+
+    class Meta:
+        model = Country
         fields = '__all__'
