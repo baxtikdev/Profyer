@@ -21,7 +21,7 @@ class CategoryAdmin(TranslatableAdmin):
     list_display = ('name',)
     fieldsets = (
         (None, {
-            'fields': ['name'],
+            'fields': ['page', 'name'],
         }),
     )
 

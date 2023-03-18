@@ -15,6 +15,7 @@ class Page(TranslatableModel):
 
 
 class Category(TranslatableModel):
+    page = models.ForeignKey(Page, on_delete=models.CASCADE)
     translations = TranslatedFields(
         name=models.CharField(_("Name of Category"), max_length=50)
     )
