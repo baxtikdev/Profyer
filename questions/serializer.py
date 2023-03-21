@@ -6,14 +6,6 @@ from parler_rest.serializers import TranslatableModelSerializer
 from parler_rest.fields import TranslatedFieldsField
 
 
-class PageSerializer(TranslatedSerializerMixin, TranslatableModelSerializer):
-    translations = TranslatedFieldsField(shared_model=Page)
-
-    class Meta:
-        model = Page
-        fields = '__all__'
-
-
 class CategorySerializer(TranslatedSerializerMixin, TranslatableModelSerializer):
     translations = TranslatedFieldsField(shared_model=Category)
 
@@ -24,6 +16,19 @@ class CategorySerializer(TranslatedSerializerMixin, TranslatableModelSerializer)
     def to_representation(self, instance):
         response = super().to_representation(instance)
         response['questions'] = QuestionSerializer(instance.category_question.all(), many=True).data
+        return response
+
+
+class PageSerializer(TranslatedSerializerMixin, TranslatableModelSerializer):
+    translations = TranslatedFieldsField(shared_model=Page)
+
+    class Meta:
+        model = Page
+        fields = '__all__'
+
+    def to_representation(self, instance):
+        response = super().to_representation(instance)
+        response['category'] = CategorySerializer(instance.category_set.all(), many=True).data
         return response
 
 

@@ -30,6 +30,7 @@ class QuestionType(models.TextChoices):
     NUMBER = 'NUMBER', _('NUMBER')
     AGE = 'AGE', _('AGE')
     COUNTRY = 'COUNTRY', _('COUNTRY')
+    SERVICES = 'SERVICES', _('SERVICES')
 
 
 class Question(TranslatableModel):
