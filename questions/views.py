@@ -4,8 +4,10 @@ from rest_framework.viewsets import GenericViewSet
 from .models import Page, Category, UserAnswer, Question, Option
 from .paginator import CustomPagination
 from .serializer import ServiceSerializer, PageSerializer, CategorySerializer, UserAnswerSerializer, GetAnswerSerializer
-from users.models import Service, Country
+from users.models import Service, Country, UserVote
+from django.conf import settings
 from .tasks import add_ans
+import pandas as pd
 
 
 class ServiceAPIView(mixins.ListModelMixin, mixins.CreateModelMixin, GenericViewSet):
@@ -107,5 +109,43 @@ class GetAnswerAPIView(mixins.CreateModelMixin, GenericViewSet):
     def create(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        return Response(status=status.HTTP_200_OK)
+        data = serializer.validated_data.get('data')
 
+        voteduser = UserVote.objects.get(id=data.get('user_id'))
+        result = []
+        for i in data.get('answers'):
+            question = Question.objects.get(id=i.get('question_id'))
+            # ans = UserAnswer.objects.create(user_id=data.get('user_id'), question=question)
+            option_text = ''
+            for j in i.get('options'):
+                if question.type == 'SERVICES':
+                    option = Service.objects.get(id=j)
+                    option_text += f'{option.name}\n'
+                    continue
+                elif question.type == 'COUNTRY':
+                    option = Country.objects.get(id=j)
+                    option_text += f'{option.name}\n'
+                    continue
+                elif question.type == 'PERCENT':
+                    # voteduser.percent = i.get('percent')
+                    # voteduser.save()
+                    option_text = f"{i.get('percent')} " + option_text
+                    break
+                elif question.type == 'NUMBER':
+                    option_text = i.get('number')
+                    break
+                elif question.type == 'AGE':
+                    option_text = i.get('age')
+                    break
+                else:
+                    option = Option.objects.get(id=j)
+                    option_text += f'{option.text}\n'
+                    # ans.answer.add(option)
+                    # ans.save()
+            result.append({'Question': question.text, 'Option': option_text})
+
+        file_url = f'{settings.BASE_DIR}/media/downloads/{voteduser.email}.xlsx'
+        pd.DataFrame(result).to_excel(file_url)
+        voteduser.file_url = file_url
+        voteduser.save()
+        return Response(status=status.HTTP_200_OK)
