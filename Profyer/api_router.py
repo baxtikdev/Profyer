@@ -5,7 +5,7 @@ from django.urls import path
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from questions.views import QuestionAPIView, UserAnswerAPIView, ServiceAPIView, PageAPIView
-from users.views import NumberUserVoteAPIView, AgeUserVoteAPIView, CreateUserAPIView, LanguageAPIView
+from users.views import NumberUserVoteAPIView, AgeUserVoteAPIView, CreateUserAPIView, LanguageAPIView, CountryAPIView
 
 if settings.DEBUG:
     router = DefaultRouter()
@@ -13,11 +13,11 @@ else:
     router = SimpleRouter()
 
 router.register("user", CreateUserAPIView)
-router.register("user-vote", NumberUserVoteAPIView)
-router.register("user-age", AgeUserVoteAPIView)
+# router.register("user-vote", NumberUserVoteAPIView)
+# router.register("user-age", AgeUserVoteAPIView)
 router.register("services", ServiceAPIView)
 router.register("languages", LanguageAPIView)
-# router.register("questions", QuestionAPIView)
+router.register("countries", CountryAPIView)
 router.register("questions", PageAPIView)
 router.register("user-answer", UserAnswerAPIView)
 

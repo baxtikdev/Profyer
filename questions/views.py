@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 from .models import Page, Category, UserAnswer, Question, Option
 from .paginator import CustomPagination
-from .serializer import ServiceSerializer, PageSerializer, CategorySerializer, UserAnswerSerializer
+from .serializer import ServiceSerializer, PageSerializer, CategorySerializer, UserAnswerSerializer, GetAnswerSerializer
 from users.models import Service, Country
 from .tasks import add_ans
 
@@ -98,3 +98,14 @@ class UserAnswerAPIView(mixins.CreateModelMixin, GenericViewSet):
         serializer.is_valid(raise_exception=True)
         add_ans.delay(serializer.data)
         return Response(status=status.HTTP_200_OK)
+
+
+class GetAnswerAPIView(mixins.CreateModelMixin, GenericViewSet):
+    queryset = UserAnswer.objects.all()
+    serializer_class = GetAnswerSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        return Response(status=status.HTTP_200_OK)
+

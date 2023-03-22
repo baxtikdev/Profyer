@@ -66,3 +66,7 @@ class UserAnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserAnswer
         fields = '__all__'
+
+
+class GetAnswerSerializer(serializers.Serializer):
+    data = serializers.JSONField(required=True)
