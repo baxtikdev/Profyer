@@ -31,6 +31,7 @@ class QuestionType(models.TextChoices):
     AGE = 'AGE', _('AGE')
     COUNTRY = 'COUNTRY', _('COUNTRY')
     SERVICES = 'SERVICES', _('SERVICES')
+    PERCENT = 'PERCENT', _('PERCENT')
 
 
 class Question(TranslatableModel):
