@@ -4,7 +4,7 @@ from rest_framework.routers import DefaultRouter, SimpleRouter
 from django.urls import path
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from questions.views import QuestionAPIView, UserAnswerAPIView, ServiceAPIView, PageAPIView
+from questions.views import QuestionAPIView, UserAnswerAPIView, ServiceAPIView, PageAPIView, GetAnswerAPIView
 from users.views import NumberUserVoteAPIView, AgeUserVoteAPIView, CreateUserAPIView, LanguageAPIView, CountryAPIView
 
 if settings.DEBUG:
@@ -19,7 +19,8 @@ router.register("services", ServiceAPIView)
 router.register("languages", LanguageAPIView)
 router.register("countries", CountryAPIView)
 router.register("questions", PageAPIView)
-router.register("user-answer", UserAnswerAPIView)
+# router.register("user-answer", UserAnswerAPIView)
+router.register("answers", GetAnswerAPIView)
 
 app_name = "api"
 urlpatterns = router.urls
