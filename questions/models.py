@@ -57,6 +57,9 @@ class Option(TranslatableModel):
         text=models.TextField(_("Option text"))
     )
 
+    class Meta:
+        ordering = ['id']
+
     def __str__(self):
         return self.text[:20]
 
