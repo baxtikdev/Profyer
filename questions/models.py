@@ -44,6 +44,9 @@ class Question(TranslatableModel):
     type = models.CharField(max_length=10, default=QuestionType.CHOICE, choices=QuestionType.choices)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['id']
+
     def __str__(self):
         return self.text[:20] + ' ' + str(self.base)
 
