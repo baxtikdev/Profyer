@@ -230,7 +230,7 @@ STATICFILES_FINDERS = [
 if DEBUG:
     MEDIA_ROOT = str(BASE_DIR / "media")
 else:
-    MEDIA_ROOT = env("DJANGO_MEDIA")
+    MEDIA_ROOT = '/media/'
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = "/media/"
