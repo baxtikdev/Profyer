@@ -144,7 +144,7 @@ class GetAnswerAPIView(mixins.CreateModelMixin, GenericViewSet):
                     # ans.save()
             result.append({'Question': question.text, 'Option': option_text})
 
-        file_url = f'{settings.MEDIA_ROOT}/{voteduser.email}.xlsx'
+        file_url = f'{settings.BASE_DIR}/media/{voteduser.email}.xlsx'
         pd.DataFrame(result).to_excel(file_url)
         voteduser.file_url = file_url
         voteduser.save()
