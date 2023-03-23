@@ -557,7 +557,7 @@ client = {
                         ]
                     },
                     {
-                        "type": "CHOICE",
+                        "type": "PERCENT",
                         "base": 1,
                         "question": {
                             "ru": {
@@ -602,10 +602,10 @@ client = {
                             },
                             {
                                 "ru": {
-                                    "name": "___% от суммы заказа"
+                                    "name": "% от суммы заказа"
                                 },
                                 "en": {
-                                    "name": "___% of the order amount"
+                                    "name": "% of the order amount"
                                 },
                                 "lt": {
                                     "name": ""
@@ -614,10 +614,10 @@ client = {
                                     "name": ""
                                 },
                                 "nl": {
-                                    "name": "___% van het orderbedrag"
+                                    "name": "% van het orderbedrag"
                                 },
                                 "es": {
-                                    "name": "___% del monto del pedido"
+                                    "name": "% del monto del pedido"
                                 }
                             }
                         ]
@@ -3517,4 +3517,390 @@ country = [
             "name": "España"
         }
     }
+]
+
+language = [
+    {
+        "ru": {
+            "name": "Русский"
+        },
+        "en": {
+            "name": "Russian"
+        },
+        "lt": {
+            "name": "Rusų"
+        },
+        "uk": {
+            "name": "Pосійський"
+        },
+        "nl": {
+            "name": "Russisch"
+        },
+        "es": {
+            "name": "Rusa"
+        }
+    },
+    {
+        "ru": {
+            "name": "Английский"
+        },
+        "en": {
+            "name": "English"
+        },
+        "lt": {
+            "name": "Anglų"
+        },
+        "uk": {
+            "name": "Aнглійська"
+        },
+        "nl": {
+            "name": "Engels"
+        },
+        "es": {
+            "name": "Inglesa"
+        }
+    },
+    {
+        "ru": {
+            "name": "Литовский"
+        },
+        "en": {
+            "name": "Lithuania"
+        },
+        "lt": {
+            "name": "Lietuvių"
+        },
+        "uk": {
+            "name": "Литовський"
+        },
+        "nl": {
+            "name": "Litouws"
+        },
+        "es": {
+            "name": "Lituana"
+        }
+    },
+    {
+        "ru": {
+            "name": "Yкраинец"
+        },
+        "en": {
+            "name": "Ukrainian"
+        },
+        "lt": {
+            "name": "Ukrainiečių"
+        },
+        "uk": {
+            "name": "Yкраїнська"
+        },
+        "nl": {
+            "name": "Oekraïens"
+        },
+        "es": {
+            "name": "Ucrania"
+        }
+    },
+    {
+        "ru": {
+            "name": "Голландский"
+        },
+        "en": {
+            "name": "Dutch"
+        },
+        "lt": {
+            "name": "Olandų"
+        },
+        "uk": {
+            "name": "Голландська"
+        },
+        "nl": {
+            "name": "Nederlands"
+        },
+        "es": {
+            "name": "Holandés"
+        }
+    },
+    {
+        "ru": {
+            "name": "Испанский"
+        },
+        "en": {
+            "name": "Spanish"
+        },
+        "lt": {
+            "name": "Ispanų"
+        },
+        "uk": {
+            "name": "Іспанська"
+        },
+        "nl": {
+            "name": "Spaans"
+        },
+        "es": {
+            "name": "Española"
+        }
+    }
+]
+
+service = [
+    {
+        "ru": {
+            "name": "Поддержка дома"
+        },
+        "en": {
+            "name": "Home support"
+        },
+        "lt": {
+            "name": "Pagalba namuose"
+        },
+        "uk": {
+            "name": ""
+        },
+        "nl": {
+            "name": ""
+        },
+        "es": {
+            "name": "Ayuda a domicilio"
+        }
+    },
+    {
+        "ru": {
+            "name": "Сервисный центр"
+        },
+        "en": {
+            "name": "Service center"
+        },
+        "lt": {
+            "name": "Paslaugų centras"
+        },
+        "uk": {
+            "name": ""
+        },
+        "nl": {
+            "name": ""
+        },
+        "es": {
+            "name": "Personal del hogar"
+        }
+    },
+    {
+        "ru": {
+            "name": "Отделка и ремонт"
+        },
+        "en": {
+            "name": "Finishing and renovation"
+        },
+        "lt": {
+            "name": "Apdaila ir renovacija"
+        },
+        "uk": {
+            "name": ""
+        },
+        "nl": {
+            "name": ""
+        },
+        "es": {
+            "name": "Acabado y renovación"
+        }
+    },
+    {
+        "ru": {
+            "name": "Водоснабжение"
+        },
+        "en": {
+            "name": "Water supply"
+        },
+        "lt": {
+            "name": "Vandens tiekimas"
+        },
+        "uk": {
+            "name": ""
+        },
+        "nl": {
+            "name": ""
+        },
+        "es": {
+            "name": "Suministro de agua"
+        }
+    },
+    {
+        "ru": {
+            "name": "Электрик"
+        },
+        "en": {
+            "name": "Electrician"
+        },
+        "lt": {
+            "name": "Elektrikas"
+        },
+        "uk": {
+            "name": ""
+        },
+        "nl": {
+            "name": ""
+        },
+        "es": {
+            "name": "Electricista"
+        }
+    },
+    {
+        "ru": {
+            "name": "Мебельщик"
+        },
+        "en": {
+            "name": "Furniture maker"
+        },
+        "lt": {
+            "name": "Baldininkas"
+        },
+        "uk": {
+            "name": ""
+        },
+        "nl": {
+            "name": ""
+        },
+        "es": {
+            "name": "Fabricante de muebles"
+        }
+    },
+    {
+        "ru": {
+            "name": "Двери и окна"
+        },
+        "en": {
+            "name": "Doors and windows"
+        },
+        "lt": {
+            "name": "Durys ir langai"
+        },
+        "uk": {
+            "name": ""
+        },
+        "nl": {
+            "name": ""
+        },
+        "es": {
+            "name": "Puertas y ventanas"
+        }
+    },
+    {
+        "ru": {
+            "name": "Строительство"
+        },
+        "en": {
+            "name": "Construction"
+        },
+        "lt": {
+            "name": "Statyba"
+        },
+        "uk": {
+            "name": ""
+        },
+        "nl": {
+            "name": ""
+        },
+        "es": {
+            "name": "Construcción"
+        }
+    },
+    {
+        "ru": {
+            "name": "Вентиляция"
+        },
+        "en": {
+            "name": "Ventilation"
+        },
+        "lt": {
+            "name": "Vėdinimas"
+        },
+        "uk": {
+            "name": ""
+        },
+        "nl": {
+            "name": ""
+        },
+        "es": {
+            "name": "Ventilación"
+        }
+    },
+    {
+        "ru": {
+            "name": "Аренда"
+        },
+        "en": {
+            "name": "Rent"
+        },
+        "lt": {
+            "name": "Nuoma"
+        },
+        "uk": {
+            "name": ""
+        },
+        "nl": {
+            "name": ""
+        },
+        "es": {
+            "name": "Alquilar"
+        }
+    },
+    {
+        "ru": {
+            "name": "Логистика"
+        },
+        "en": {
+            "name": "Logistics"
+        },
+        "lt": {
+            "name": "Logistika"
+        },
+        "uk": {
+            "name": ""
+        },
+        "nl": {
+            "name": ""
+        },
+        "es": {
+            "name": "Logística"
+        }
+    },
+    {
+        "ru": {
+            "name": "Бытовые услуги"
+        },
+        "en": {
+            "name": "Domestic services"
+        },
+        "lt": {
+            "name": "Buitinės paslaugos"
+        },
+        "uk": {
+            "name": ""
+        },
+        "nl": {
+            "name": ""
+        },
+        "es": {
+            "name": "Servicios domésticos"
+        }
+    },
+    {
+        "ru": {
+            "name": "Домашний персонал"
+        },
+        "en": {
+            "name": "Household staff"
+        },
+        "lt": {
+            "name": "Buitinis personalas"
+        },
+        "uk": {
+            "name": ""
+        },
+        "nl": {
+            "name": ""
+        },
+        "es": {
+            "name": "Personal del hogar"
+        }
+    },
 ]

@@ -4,7 +4,7 @@ from rest_framework.viewsets import GenericViewSet
 from .models import Page, Category, UserAnswer, Question, Option
 from .paginator import CustomPagination
 from .serializer import ServiceSerializer, PageSerializer, CategorySerializer, UserAnswerSerializer, GetAnswerSerializer
-from users.models import Service, Country, UserVote
+from users.models import Service, Country, UserVote, Language
 from django.conf import settings
 from .tasks import add_ans
 import pandas as pd
@@ -16,19 +16,39 @@ class ServiceAPIView(mixins.ListModelMixin, mixins.CreateModelMixin, GenericView
 
     def create(self, request, *args, **kwargs):
         q = request.query_params.get('q')
-        if q is not None and q in ['client', 'specialist', 'country']:
+        if q is not None and q in ['client', 'specialist', 'country', 'language', 'service']:
             make_questions(q)
 
         return Response(status=status.HTTP_200_OK)
 
 
 def make_questions(type):
-    from .dict_json import client, specialist, country
+    from .dict_json import client, specialist, country, language, service
     Languages = ['ru', 'lt', 'uk', 'nl', 'es']
     if type == 'country':
         for c in country:
             ct = Country.objects.create(name=c['en']['name'])
             for lp in Languages:
+                ct.set_current_language(language_code=lp)
+                ct.name = c[lp]['name']
+                ct.save()
+        return
+    elif type == 'language':
+        for c in language:
+            ct = Language.objects.create(name=c['en']['name'])
+            for lp in Languages:
+                if not c[lp]['name']:
+                    continue
+                ct.set_current_language(language_code=lp)
+                ct.name = c[lp]['name']
+                ct.save()
+        return
+    elif type == 'service':
+        for c in service:
+            ct = Service.objects.create(name=c['en']['name'])
+            for lp in Languages:
+                if not c[lp]['name']:
+                    continue
                 ct.set_current_language(language_code=lp)
                 ct.name = c[lp]['name']
                 ct.save()
