@@ -48,7 +48,7 @@ class Question(TranslatableModel):
         ordering = ['id']
 
     def __str__(self):
-        return self.text[:20] + ' ' + str(self.base)
+        return self.text + ' ' + str(self.base)
 
 
 class Option(TranslatableModel):
@@ -61,7 +61,7 @@ class Option(TranslatableModel):
         ordering = ['id']
 
     def __str__(self):
-        return self.text[:20]
+        return self.text
 
 
 class UserAnswer(models.Model):
