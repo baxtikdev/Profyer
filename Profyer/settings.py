@@ -210,7 +210,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # STATIC
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-root
@@ -228,7 +227,11 @@ STATICFILES_FINDERS = [
 # MEDIA
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-MEDIA_ROOT = str(BASE_DIR / "media")
+if DEBUG:
+    MEDIA_ROOT = str(BASE_DIR / "media")
+else:
+    MEDIA_ROOT = '/var/opt/Profyer/media/'
+
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = "/media/"
 
