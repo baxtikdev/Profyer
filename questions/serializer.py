@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Page, Category, Question, Option, UserAnswer
-from users.models import Service, UserVote
+from users.models import Service
 from .translations import TranslatedSerializerMixin
 from parler_rest.serializers import TranslatableModelSerializer
 from parler_rest.fields import TranslatedFieldsField
@@ -66,11 +66,6 @@ class UserAnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserAnswer
         fields = '__all__'
-
-class UserVoteSerializer2(serializers.ModelSerializer):
-    class Meta:
-        model = UserVote
-        fields = ['file_url']
 
 
 class GetAnswerSerializer(serializers.Serializer):

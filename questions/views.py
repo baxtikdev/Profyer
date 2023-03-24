@@ -3,8 +3,7 @@ from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 from .models import Page, Category, UserAnswer, Question, Option
 from .paginator import CustomPagination
-from .serializer import ServiceSerializer, PageSerializer, CategorySerializer, UserAnswerSerializer, \
-    GetAnswerSerializer, UserVoteSerializer2
+from .serializer import ServiceSerializer, PageSerializer, CategorySerializer, UserAnswerSerializer, GetAnswerSerializer
 from users.models import Service, Country, UserVote, Language
 from django.conf import settings
 from .tasks import add_ans
@@ -123,55 +122,50 @@ class UserAnswerAPIView(mixins.CreateModelMixin, GenericViewSet):
         return Response(status=status.HTTP_200_OK)
 
 
-class GetAnswerAPIView(mixins.CreateModelMixin, mixins.ListModelMixin, GenericViewSet):
+class GetAnswerAPIView(mixins.CreateModelMixin, GenericViewSet):
     queryset = UserAnswer.objects.all()
     serializer_class = GetAnswerSerializer
 
-    def list(self, request):
-        res = UserVote.objects.all()
-        serializer = UserVoteSerializer2(res, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
     def create(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        data = serializer.validated_data.get('data')
-
-        voteduser = UserVote.objects.get(id=data.get('user_id'))
-        result = []
-        for i in data.get('answers'):
-            question = Question.objects.get(id=i.get('question_id'))
-            # ans = UserAnswer.objects.create(user_id=data.get('user_id'), question=question)
-            option_text = ''
-            for j in i.get('options'):
-                if question.type == 'SERVICES':
-                    option = Service.objects.get(id=j)
-                    option_text += f'{option.name}\n'
-                    continue
-                elif question.type == 'COUNTRY':
-                    option = Country.objects.get(id=j)
-                    option_text += f'{option.name}\n'
-                    continue
-                elif question.type == 'PERCENT':
-                    # voteduser.percent = i.get('percent')
-                    # voteduser.save()
-                    option_text = f"{i.get('percent')} " + option_text
-                    break
-                elif question.type == 'NUMBER':
-                    option_text = i.get('number')
-                    break
-                elif question.type == 'AGE':
-                    option_text = i.get('age')
-                    break
-                else:
-                    option = Option.objects.get(id=j)
-                    option_text += f'{option.text}\n'
-                    # ans.answer.add(option)
-                    # ans.save()
-            result.append({'Question': question.text, 'Option': option_text})
+        # serializer = self.serializer_class(data=request.data)
+        # serializer.is_valid(raise_exception=True)
+        # data = serializer.validated_data.get('data')
+        #
+        # voteduser = UserVote.objects.get(id=data.get('user_id'))
+        # result = []
+        # for i in data.get('answers'):
+        #     question = Question.objects.get(id=i.get('question_id'))
+        #     # ans = UserAnswer.objects.create(user_id=data.get('user_id'), question=question)
+        #     option_text = ''
+        #     for j in i.get('options'):
+        #         if question.type == 'SERVICES':
+        #             option = Service.objects.get(id=j)
+        #             option_text += f'{option.name}\n'
+        #             continue
+        #         elif question.type == 'COUNTRY':
+        #             option = Country.objects.get(id=j)
+        #             option_text += f'{option.name}\n'
+        #             continue
+        #         elif question.type == 'PERCENT':
+        #             # voteduser.percent = i.get('percent')
+        #             # voteduser.save()
+        #             option_text = f"{i.get('percent')} " + option_text
+        #             break
+        #         elif question.type == 'NUMBER':
+        #             option_text = i.get('number')
+        #             break
+        #         elif question.type == 'AGE':
+        #             option_text = i.get('age')
+        #             break
+        #         else:
+        #             option = Option.objects.get(id=j)
+        #             option_text += f'{option.text}\n'
+        #             # ans.answer.add(option)
+        #             # ans.save()
+        #     # result.append({'Question': question.text, 'Option': option_text})
         # TODO: url bilan ishla
-        file_url = f'{settings.BASE_DIR}/media/{voteduser.email}.xlsx'
-        pd.DataFrame(result).to_excel(file_url)
-        voteduser.file_url = f'media/{voteduser.email}.xlsx'
-        voteduser.save()
+        # file_url = f'{settings.BASE_DIR}/media/{voteduser.email}.xlsx'
+        # pd.DataFrame(result).to_excel(file_url)
+        # voteduser.file_url = file_url
+        # voteduser.save()
         return Response(status=status.HTTP_200_OK)

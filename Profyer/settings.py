@@ -83,18 +83,18 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-# if DEBUG:
-#     INSTALLED_APPS += ["debug_toolbar"]  # noqa F405
-#     DEBUG_TOOLBAR_CONFIG = {
-#         "DISABLE_PANELS": ["debug_toolbar.panels.redirects.RedirectsPanel"],
-#         "SHOW_TEMPLATE_CONTEXT": True,
-#     }
-#     INSTALLED_APPS += ["django_extensions"]
-#     MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
-#     INTERNAL_IPS = ["127.0.0.1", 'localhost']
-#
-# else:
-#     INSTALLED_APPS += ["anymail"]
+if DEBUG:
+    INSTALLED_APPS += ["debug_toolbar"]  # noqa F405
+    DEBUG_TOOLBAR_CONFIG = {
+        "DISABLE_PANELS": ["debug_toolbar.panels.redirects.RedirectsPanel"],
+        "SHOW_TEMPLATE_CONTEXT": True,
+    }
+    INSTALLED_APPS += ["django_extensions"]
+    MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
+    INTERNAL_IPS = ["127.0.0.1", 'localhost']
+
+else:
+    INSTALLED_APPS += ["anymail"]
 
 ROOT_URLCONF = 'Profyer.urls'
 
@@ -124,12 +124,6 @@ WSGI_APPLICATION = 'Profyer.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 DATABASES = {
     "default": env.db(
