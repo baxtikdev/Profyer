@@ -9,6 +9,7 @@ __pycache__/
 media/
 #local
 venv/
+staticfiles/
 
 # Distribution / packaging
 .Python

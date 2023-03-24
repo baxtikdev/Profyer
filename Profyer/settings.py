@@ -83,18 +83,18 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-if DEBUG:
-    INSTALLED_APPS += ["debug_toolbar"]  # noqa F405
-    DEBUG_TOOLBAR_CONFIG = {
-        "DISABLE_PANELS": ["debug_toolbar.panels.redirects.RedirectsPanel"],
-        "SHOW_TEMPLATE_CONTEXT": True,
-    }
-    INSTALLED_APPS += ["django_extensions"]
-    MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
-    INTERNAL_IPS = ["127.0.0.1", 'localhost']
-
-else:
-    INSTALLED_APPS += ["anymail"]
+# if DEBUG:
+#     INSTALLED_APPS += ["debug_toolbar"]  # noqa F405
+#     DEBUG_TOOLBAR_CONFIG = {
+#         "DISABLE_PANELS": ["debug_toolbar.panels.redirects.RedirectsPanel"],
+#         "SHOW_TEMPLATE_CONTEXT": True,
+#     }
+#     INSTALLED_APPS += ["django_extensions"]
+#     MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
+#     INTERNAL_IPS = ["127.0.0.1", 'localhost']
+#
+# else:
+#     INSTALLED_APPS += ["anymail"]
 
 ROOT_URLCONF = 'Profyer.urls'
 
@@ -227,10 +227,8 @@ STATICFILES_FINDERS = [
 # MEDIA
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-if DEBUG:
-    MEDIA_ROOT = str(BASE_DIR / "media")
-else:
-    MEDIA_ROOT = '/media/'
+
+MEDIA_ROOT = str(BASE_DIR / "media")
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = "/media/"
@@ -239,7 +237,6 @@ PARLER_ENABLE_CACHING = True
 PARLER_LANGUAGES = {
     None: (
         {'code': 'en', },
-        # {'code': 'uz', },
         {'code': 'ru', },
         {'code': 'nl', },
         {'code': 'lt', },

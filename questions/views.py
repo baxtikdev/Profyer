@@ -3,7 +3,8 @@ from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 from .models import Page, Category, UserAnswer, Question, Option
 from .paginator import CustomPagination
-from .serializer import ServiceSerializer, PageSerializer, CategorySerializer, UserAnswerSerializer, GetAnswerSerializer
+from .serializer import ServiceSerializer, PageSerializer, CategorySerializer, UserAnswerSerializer, \
+    GetAnswerSerializer, UserVoteSerializer2
 from users.models import Service, Country, UserVote, Language
 from django.conf import settings
 from .tasks import add_ans
@@ -122,9 +123,14 @@ class UserAnswerAPIView(mixins.CreateModelMixin, GenericViewSet):
         return Response(status=status.HTTP_200_OK)
 
 
-class GetAnswerAPIView(mixins.CreateModelMixin, GenericViewSet):
+class GetAnswerAPIView(mixins.CreateModelMixin, mixins.ListModelMixin, GenericViewSet):
     queryset = UserAnswer.objects.all()
     serializer_class = GetAnswerSerializer
+
+    def list(self, request):
+        res = UserVote.objects.all()
+        serializer = UserVoteSerializer2(res, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def create(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
@@ -166,6 +172,6 @@ class GetAnswerAPIView(mixins.CreateModelMixin, GenericViewSet):
         # TODO: url bilan ishla
         file_url = f'{settings.BASE_DIR}/media/{voteduser.email}.xlsx'
         pd.DataFrame(result).to_excel(file_url)
-        voteduser.file_url = file_url
+        voteduser.file_url = f'media/{voteduser.email}.xlsx'
         voteduser.save()
         return Response(status=status.HTTP_200_OK)
