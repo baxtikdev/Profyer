@@ -498,7 +498,7 @@ client = {
                                     "name": "Возмещение понесенного ущерба при порче материалов"
                                 },
                                 "en": {
-                                    "name": "Reimbursement of money paid for poor-quality work"
+                                    "name": "Compensation of losses incurred in case of damage to materials"
                                 },
                                 "lt": {
                                     "name": ""
@@ -515,10 +515,10 @@ client = {
                             },
                             {
                                 "ru": {
-                                    "name": "Возврат уплаченных средств при некачественно выполненой работе"
+                                    "name": "Выплата неустойки (пени) за срыв сроков, неявку специалиста"
                                 },
                                 "en": {
-                                    "name": "Reimbursement of money paid for poor-quality work"
+                                    "name": "Penalties (fines) for delays and failure of a specialist to appear"
                                 },
                                 "lt": {
                                     "name": ""
@@ -694,7 +694,47 @@ client = {
                             },
                             {
                                 "ru": {
-                                    "name": "Размещаю объявления в facebook"
+                                    "name": "Беру заявки с тематических порталов / сервисов"
+                                },
+                                "en": {
+                                    "name": "I create requests on thematic services (such as Werkspot)"
+                                },
+                                "lt": {
+                                    "name": ""
+                                },
+                                "uk": {
+                                    "name": ""
+                                },
+                                "nl": {
+                                    "name": "Ik maak aanvragen op thematische diensten (zoals Werkspot)"
+                                },
+                                "es": {
+                                    "name": "Creo solicitudes en servicios temáticos"
+                                }
+                            },
+                            {
+                                "ru": {
+                                    "name": "Ищу в Google"
+                                },
+                                "en": {
+                                    "name": "I search in my browser, e.g. Google"
+                                },
+                                "lt": {
+                                    "name": ""
+                                },
+                                "uk": {
+                                    "name": ""
+                                },
+                                "nl": {
+                                    "name": "Ik zoek in mijn browser, b.v. Google"
+                                },
+                                "es": {
+                                    "name": "Busco en mi navegador, p. Google"
+                                }
+                            },
+                            {
+                                "ru": {
+                                    "name": "Размещаю рекламу / объявления в facebook"
                                 },
                                 "en": {
                                     "name": "I place requests in Facebook groups"
@@ -732,46 +772,6 @@ client = {
                                     "name": "Registrado para grupos en Telegram"
                                 }
                             },
-                            {
-                                "ru": {
-                                    "name": "Создаю заявки с тематических порталов / сервисов"
-                                },
-                                "en": {
-                                    "name": "I create requests on thematic services (such as Werkspot)"
-                                },
-                                "lt": {
-                                    "name": ""
-                                },
-                                "uk": {
-                                    "name": ""
-                                },
-                                "nl": {
-                                    "name": "Ik maak aanvragen op thematische diensten (zoals Werkspot)"
-                                },
-                                "es": {
-                                    "name": "Creo solicitudes en servicios temáticos"
-                                }
-                            },
-                            {
-                                "ru": {
-                                    "name": "Ищу в Google"
-                                },
-                                "en": {
-                                    "name": "I search in my browser, e.g. Google"
-                                },
-                                "lt": {
-                                    "name": ""
-                                },
-                                "uk": {
-                                    "name": ""
-                                },
-                                "nl": {
-                                    "name": "Ik zoek in mijn browser, b.v. Google"
-                                },
-                                "es": {
-                                    "name": "Busco en mi navegador, p. Google"
-                                }
-                            }
                         ]
                     },
                     {
@@ -886,7 +886,7 @@ client = {
                         "options": [
                             {
                                 "ru": {
-                                    "name": "Многоязычный интерфейс"
+                                    "name": "Мультиязычного интерфейса"
                                 },
                                 "en": {
                                     "name": "Multilingual interface"
@@ -906,7 +906,7 @@ client = {
                             },
                             {
                                 "ru": {
-                                    "name": "Форум/профессиональное сообщество, где я могу получить предварительную консультацию"
+                                    "name": "Форума / профессионального сообщества, где могу предварительно проконсультироваться"
                                 },
                                 "en": {
                                     "name": "Forum / professional community where I can get a preliminary consultation"
@@ -926,7 +926,7 @@ client = {
                             },
                             {
                                 "ru": {
-                                    "name": "Календарь/планировщик работы"
+                                    "name": "Календарь/планировщик работ"
                                 },
                                 "en": {
                                     "name": "Calendar / work scheduler"
@@ -1005,7 +1005,7 @@ client = {
                             },
                             {
                                 "ru": {
-                                    "name": "Возможность подробно обсудить заказ перед окончательным выбором специалиста"
+                                    "name": "Возможность  детально обсудить заявку до заказа специалиста"
                                 },
                                 "en": {
                                     "name": "Opportunities to discuss the order in detail before the final choice of a specialist"
@@ -1023,66 +1023,6 @@ client = {
                                     "name": "Oportunidades para discutir la orden en detalle antes de la elección final de un especialista"
                                 }
                             },
-                            {
-                                "ru": {
-                                    "name": "Возможность заказать все необходимое для работы на портале/в одном месте (инвентарь, материалы)"
-                                },
-                                "en": {
-                                    "name": "Ability to order everything you need for the work on the portal / in one place (inventory, materials)"
-                                },
-                                "lt": {
-                                    "name": ""
-                                },
-                                "uk": {
-                                    "name": ""
-                                },
-                                "nl": {
-                                    "name": "Mogelijkheid om alles wat u nodig heeft voor het werk op het portaal / op één plek te bestellen (inventaris, materialen)"
-                                },
-                                "es": {
-                                    "name": "Posibilidad de ordenar todo lo que necesita para el trabajo en el portal / en un solo lugar (inventario, materiales)"
-                                }
-                            },
-                            {
-                                "ru": {
-                                    "name": "Возможность показать свою предыдущую работу и продвинуть свои профессиональные навыки"
-                                },
-                                "en": {
-                                    "name": "Opportunities to show your previous work and promote your professional skills"
-                                },
-                                "lt": {
-                                    "name": ""
-                                },
-                                "uk": {
-                                    "name": ""
-                                },
-                                "nl": {
-                                    "name": "Mogelijkheden om je eerdere werk te laten zien en je professionele vaardigheden te promoten"
-                                },
-                                "es": {
-                                    "name": "Oportunidades para mostrar su trabajo anterior y promover sus habilidades profesionales"
-                                }
-                            },
-                            {
-                                "ru": {
-                                    "name": "Возможности просмотра информации о специалисте: предыдущие заказы, профессиональные навыки и т.д."
-                                },
-                                "en": {
-                                    "name": "Opportunities to view information about the specialist: previous orders, professional skills, etc."
-                                },
-                                "lt": {
-                                    "name": ""
-                                },
-                                "uk": {
-                                    "name": ""
-                                },
-                                "nl": {
-                                    "name": "Mogelijkheden om informatie over de specialist te bekijken: eerdere bestellingen, professionele vaardigheden, enz."
-                                },
-                                "es": {
-                                    "name": "Oportunidades para ver información sobre el especialista: pedidos anteriores, habilidades profesionales, etc."
-                                }
-                            }
                         ]
                     }
                 ]
@@ -1547,92 +1487,6 @@ client = {
                         ]
                     },
                     {
-                        "type": "CHOICE",
-                        "base": 1,
-                        "question": {
-                            "ru": {
-                                "text": "Ваш пол"
-                            },
-                            "en": {
-                                "text": "Your gender"
-                            },
-                            "lt": {
-                                "text": ""
-                            },
-                            "uk": {
-                                "text": ""
-                            },
-                            "nl": {
-                                "text": "Je geslacht"
-                            },
-                            "es": {
-                                "text": "Tu género"
-                            }
-                        },
-                        "options": [
-                            {
-                                "ru": {
-                                    "name": "Мужской"
-                                },
-                                "en": {
-                                    "name": "Male"
-                                },
-                                "lt": {
-                                    "name": ""
-                                },
-                                "uk": {
-                                    "name": ""
-                                },
-                                "nl": {
-                                    "name": "Mannelijk"
-                                },
-                                "es": {
-                                    "name": "Masculino"
-                                }
-                            },
-                            {
-                                "ru": {
-                                    "name": "Женский"
-                                },
-                                "en": {
-                                    "name": "Female"
-                                },
-                                "lt": {
-                                    "name": ""
-                                },
-                                "uk": {
-                                    "name": ""
-                                },
-                                "nl": {
-                                    "name": "Vrouwelijk"
-                                },
-                                "es": {
-                                    "name": "Femenino"
-                                }
-                            },
-                            {
-                                "ru": {
-                                    "name": "Предпочитаю не говорить"
-                                },
-                                "en": {
-                                    "name": "I prefer not to say"
-                                },
-                                "lt": {
-                                    "name": ""
-                                },
-                                "uk": {
-                                    "name": ""
-                                },
-                                "nl": {
-                                    "name": "Zeg ik liever niet"
-                                },
-                                "es": {
-                                    "name": "Prefiero no decir"
-                                }
-                            }
-                        ]
-                    },
-                    {
                         "type": "AGE",
                         "base": 1,
                         "question": {
@@ -1664,6 +1518,7 @@ client = {
         ]
     }
 }
+
 specialist = {
     "translations": {
         "page1": [
@@ -1821,7 +1676,7 @@ specialist = {
                             },
                             {
                                 "ru": {
-                                    "name": "Преобладают регулярные краткосрочные заказы"
+                                    "name": "Преобладают регулярные краткосрочные работы / поручения"
                                 },
                                 "en": {
                                     "name": "Regular short-term orders prevail"
@@ -2211,10 +2066,10 @@ specialist = {
                             },
                             {
                                 "ru": {
-                                    "name": "Детальное обсуждение фронта работ и стоимости"
+                                    "name": "Устных договоренностей достаточно"
                                 },
                                 "en": {
-                                    "name": "Verbal agreements are sufficient "
+                                    "name": "Verbal agreements are sufficient"
                                 },
                                 "lt": {
                                     "name": ""
