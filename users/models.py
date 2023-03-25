@@ -37,7 +37,6 @@ class UserVote(models.Model):
     type = models.IntegerField(choices=UserType.choices)
     created_at = models.DateTimeField(auto_now_add=True)
     file_url = models.URLField(null=True, blank=True)
-    file_media = models.FileField(upload_to='media', null=True, blank=True)
 
     def __str__(self):
         return self.email + ' ' + str(self.type)

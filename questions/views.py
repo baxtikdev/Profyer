@@ -131,12 +131,16 @@ class GetAnswerAPIView(mixins.CreateModelMixin, GenericViewSet):
         serializer.is_valid(raise_exception=True)
         data = serializer.validated_data.get('data')
 
-        voteduser = UserVote.objects.get(id=data.get('user_id'))
+        voteduser = UserVote.objects.filter(id=data.get('user_id')).first()
+        if voteduser is None:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
         result = []
         for i in data.get('answers'):
             question = Question.objects.get(id=i.get('question_id'))
             # ans = UserAnswer.objects.create(user_id=data.get('user_id'), question=question)
             option_text = ''
+            if i.get('variant'):
+                option_text += f"Мой вариант: {i.get('variant')}\n"
             for j in i.get('options'):
                 if question.type == 'SERVICES':
                     option = Service.objects.get(id=j)
@@ -166,6 +170,6 @@ class GetAnswerAPIView(mixins.CreateModelMixin, GenericViewSet):
         # TODO: url bilan ishla
         file_url = f'{settings.BASE_DIR}/media/{voteduser.email}.xlsx'
         pd.DataFrame(result).to_excel(file_url)
-        voteduser.file_url = file_url
+        voteduser.file_url = f'/media/{voteduser.email}.xlsx'
         voteduser.save()
         return Response(status=status.HTTP_200_OK)
