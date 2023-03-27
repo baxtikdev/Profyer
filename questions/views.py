@@ -168,8 +168,8 @@ class GetAnswerAPIView(mixins.CreateModelMixin, GenericViewSet):
                     # ans.save()
             result.append({'Question': question.text, 'Option': option_text})
         # TODO: url bilan ishla
-        file_url = f'{settings.MEDIA_ROOT}/media/{voteduser.email}.xlsx'
+        file_url = f'{settings.MEDIA_ROOT}media/{voteduser.email}.xlsx'
         pd.DataFrame(result).to_excel(file_url)
-        voteduser.file_url = file_url
+        voteduser.file_url = f'media/{voteduser.email}.xlsx'
         voteduser.save()
         return Response(status=status.HTTP_200_OK)
