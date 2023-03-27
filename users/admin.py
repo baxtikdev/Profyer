@@ -32,7 +32,12 @@ class LanguageAdmin(TranslatableAdmin):
 
 
 admin.site.register(Language, LanguageAdmin)
-admin.site.register(UserVote)
+
+
+@admin.register(UserVote)
+class UserVote(admin.ModelAdmin):
+    list_display = ['email', 'file_url']
+    fields = ['first_name', 'last_name', 'email', 'file_url']
 
 
 @admin.register(User)
