@@ -170,6 +170,6 @@ class GetAnswerAPIView(mixins.CreateModelMixin, GenericViewSet):
         # TODO: url bilan ishla
         file_url = f'{settings.MEDIA_ROOT}media/{voteduser.email}.xlsx'
         pd.DataFrame(result).to_excel(file_url)
-        voteduser.file_url = f'media/{voteduser.email}.xlsx'
+        voteduser.file_url = f'https://api.profyer.com/media/{voteduser.email}.xlsx'
         voteduser.save()
         return Response(status=status.HTTP_200_OK)
